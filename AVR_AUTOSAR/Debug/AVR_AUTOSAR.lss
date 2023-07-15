@@ -1,0 +1,627 @@
+
+AVR_AUTOSAR.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000360  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000004  00800060  00000360  000003f4  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000003  00800064  00800064  000003f8  2**0
+                  ALLOC
+  3 .stab         00000f54  00000000  00000000  000003f8  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  4 .stabstr      00000c49  00000000  00000000  0000134c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .comment      00000030  00000000  00000000  00001f95  2**0
+                  CONTENTS, READONLY
+  6 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00001fc8  2**2
+                  CONTENTS, READONLY
+  7 .debug_info   0000052e  00000000  00000000  00002004  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_abbrev 000004e7  00000000  00000000  00002532  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_line   0000001a  00000000  00000000  00002a19  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000001af  00000000  00000000  00002a33  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d4 e0       	ldi	r29, 0x04	; 4
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	e0 e6       	ldi	r30, 0x60	; 96
+  68:	f3 e0       	ldi	r31, 0x03	; 3
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a4 36       	cpi	r26, 0x64	; 100
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	20 e0       	ldi	r18, 0x00	; 0
+  78:	a4 e6       	ldi	r26, 0x64	; 100
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	a7 36       	cpi	r26, 0x67	; 103
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 a9 01 	call	0x352	; 0x352 <main>
+  8a:	0c 94 ae 01 	jmp	0x35c	; 0x35c <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <Det_ReportError>:
+ * 
+ */
+#include "Det.h"
+
+void Det_ReportError(uint16 ModuleId, uint8 InstanceId, uint8 ApiId, uint8 ErrorId)
+{
+  92:	cf 93       	push	r28
+  94:	df 93       	push	r29
+  96:	00 d0       	rcall	.+0      	; 0x98 <Det_ReportError+0x6>
+  98:	00 d0       	rcall	.+0      	; 0x9a <Det_ReportError+0x8>
+  9a:	1f 92       	push	r1
+  9c:	cd b7       	in	r28, 0x3d	; 61
+  9e:	de b7       	in	r29, 0x3e	; 62
+  a0:	9a 83       	std	Y+2, r25	; 0x02
+  a2:	89 83       	std	Y+1, r24	; 0x01
+  a4:	6b 83       	std	Y+3, r22	; 0x03
+  a6:	4c 83       	std	Y+4, r20	; 0x04
+  a8:	2d 83       	std	Y+5, r18	; 0x05
+  /* insert a break point here */
+  for(;;)
+  {
+
+  }
+  aa:	ff cf       	rjmp	.-2      	; 0xaa <Det_ReportError+0x18>
+
+000000ac <Dio_Init>:
+ * Return value:        None
+ * Description:         Function to Initialize the Dio module.
+ ************************************************************************************/
+/* Function for DIO Initialization API */
+void Dio_Init(const Dio_ConfigType* ConfigPtr)
+{
+  ac:	cf 93       	push	r28
+  ae:	df 93       	push	r29
+  b0:	00 d0       	rcall	.+0      	; 0xb2 <Dio_Init+0x6>
+  b2:	cd b7       	in	r28, 0x3d	; 61
+  b4:	de b7       	in	r29, 0x3e	; 62
+  b6:	9a 83       	std	Y+2, r25	; 0x02
+  b8:	89 83       	std	Y+1, r24	; 0x01
+#if (DIO_DEV_ERROR_DETECT == STD_ON)
+  /* check if the input configuration pointer is not a NULL_PTR */
+  if (ConfigPtr == NULL_PTR)
+  ba:	89 81       	ldd	r24, Y+1	; 0x01
+  bc:	9a 81       	ldd	r25, Y+2	; 0x02
+  be:	89 2b       	or	r24, r25
+  c0:	41 f4       	brne	.+16     	; 0xd2 <Dio_Init+0x26>
+  {
+    Det_ReportError(DIO_MODULE_ID, DIO_INSTANCE_ID, DIO_INIT_SID, DIO_E_PARAM_CONFIG);
+  c2:	20 e1       	ldi	r18, 0x10	; 16
+  c4:	40 e1       	ldi	r20, 0x10	; 16
+  c6:	60 e0       	ldi	r22, 0x00	; 0
+  c8:	88 e7       	ldi	r24, 0x78	; 120
+  ca:	90 e0       	ldi	r25, 0x00	; 0
+  cc:	0e 94 49 00 	call	0x92	; 0x92 <Det_ReportError>
+     */
+    Dio_PortChannels = ConfigPtr->Channels; /* address of the first Channels structure --> Channels[0] */
+    Dio_Status       = DIO_INITIALIZED;
+  }
+
+}
+  d0:	09 c0       	rjmp	.+18     	; 0xe4 <Dio_Init+0x38>
+  {
+    /*
+     * Set the module state to initialized and point to the PB configuration structure using a global pointer.
+     * This global pointer is global to be used by other functions to read the PB configuration structures
+     */
+    Dio_PortChannels = ConfigPtr->Channels; /* address of the first Channels structure --> Channels[0] */
+  d2:	89 81       	ldd	r24, Y+1	; 0x01
+  d4:	9a 81       	ldd	r25, Y+2	; 0x02
+  d6:	90 93 65 00 	sts	0x0065, r25	; 0x800065 <__data_end+0x1>
+  da:	80 93 64 00 	sts	0x0064, r24	; 0x800064 <__data_end>
+    Dio_Status       = DIO_INITIALIZED;
+  de:	81 e0       	ldi	r24, 0x01	; 1
+  e0:	80 93 66 00 	sts	0x0066, r24	; 0x800066 <Dio_Status>
+  }
+
+}
+  e4:	00 00       	nop
+  e6:	0f 90       	pop	r0
+  e8:	0f 90       	pop	r0
+  ea:	df 91       	pop	r29
+  ec:	cf 91       	pop	r28
+  ee:	08 95       	ret
+
+000000f0 <Dio_ReadChannel>:
+ * Return value:       Dio_LevelType
+ * Description:        Function to return the value of the specified DIO channel.
+ ************************************************************************************/
+/* Function for DIO read Channel API */
+Dio_LevelType Dio_ReadChannel(Dio_ChannelType const ChannelId)
+{
+  f0:	cf 93       	push	r28
+  f2:	df 93       	push	r29
+  f4:	00 d0       	rcall	.+0      	; 0xf6 <Dio_ReadChannel+0x6>
+  f6:	00 d0       	rcall	.+0      	; 0xf8 <Dio_ReadChannel+0x8>
+  f8:	1f 92       	push	r1
+  fa:	cd b7       	in	r28, 0x3d	; 61
+  fc:	de b7       	in	r29, 0x3e	; 62
+  fe:	8d 83       	std	Y+5, r24	; 0x05
+  volatile Dio_PortLevelType* PortId_Ptr = NULL_PTR;
+ 100:	1a 82       	std	Y+2, r1	; 0x02
+ 102:	19 82       	std	Y+1, r1	; 0x01
+  Dio_LevelType PinState = STD_LOW;
+ 104:	1b 82       	std	Y+3, r1	; 0x03
+  boolean   ErrorState = FALSE;
+ 106:	1c 82       	std	Y+4, r1	; 0x04
+
+#if (DIO_DEV_ERROR_DETECT == STD_ON)
+  /* Check if the Driver is initialized before using this function */
+  if (Dio_Status == DIO_NOT_INITIALIZED)
+ 108:	80 91 66 00 	lds	r24, 0x0066	; 0x800066 <Dio_Status>
+ 10c:	88 23       	and	r24, r24
+ 10e:	49 f4       	brne	.+18     	; 0x122 <Dio_ReadChannel+0x32>
+  {
+    Det_ReportError(DIO_MODULE_ID, DIO_INSTANCE_ID, DIO_READ_CHANNEL_SID, DIO_E_UNINIT);
+ 110:	20 ef       	ldi	r18, 0xF0	; 240
+ 112:	40 e0       	ldi	r20, 0x00	; 0
+ 114:	60 e0       	ldi	r22, 0x00	; 0
+ 116:	88 e7       	ldi	r24, 0x78	; 120
+ 118:	90 e0       	ldi	r25, 0x00	; 0
+ 11a:	0e 94 49 00 	call	0x92	; 0x92 <Det_ReportError>
+    ErrorState = TRUE;
+ 11e:	81 e0       	ldi	r24, 0x01	; 1
+ 120:	8c 83       	std	Y+4, r24	; 0x04
+  }
+  else
+  {
+  }
+  /* Check if the used channel is within the valid range */
+  if (DIO_CONFIGURED_CHANNLES <= ChannelId)
+ 122:	8d 81       	ldd	r24, Y+5	; 0x05
+ 124:	82 30       	cpi	r24, 0x02	; 2
+ 126:	48 f0       	brcs	.+18     	; 0x13a <Dio_ReadChannel+0x4a>
+  {
+    Det_ReportError(DIO_MODULE_ID, DIO_INSTANCE_ID, DIO_READ_CHANNEL_SID, DIO_E_PARAM_INVALID_CHANNEL_ID);
+ 128:	2a e0       	ldi	r18, 0x0A	; 10
+ 12a:	40 e0       	ldi	r20, 0x00	; 0
+ 12c:	60 e0       	ldi	r22, 0x00	; 0
+ 12e:	88 e7       	ldi	r24, 0x78	; 120
+ 130:	90 e0       	ldi	r25, 0x00	; 0
+ 132:	0e 94 49 00 	call	0x92	; 0x92 <Det_ReportError>
+    ErrorState = TRUE;
+ 136:	81 e0       	ldi	r24, 0x01	; 1
+ 138:	8c 83       	std	Y+4, r24	; 0x04
+  else
+  {
+  }
+#endif
+
+  if(ErrorState == FALSE)
+ 13a:	8c 81       	ldd	r24, Y+4	; 0x04
+ 13c:	88 23       	and	r24, r24
+ 13e:	09 f0       	breq	.+2      	; 0x142 <Dio_ReadChannel+0x52>
+ 140:	54 c0       	rjmp	.+168    	; 0x1ea <Dio_ReadChannel+0xfa>
+  {
+    /* In-case there are no errors */
+    /* Point to the correct PIN register according to the Port Id stored in the PortIndex member */
+    switch(Dio_PortChannels[ChannelId].PortIndex)
+ 142:	20 91 64 00 	lds	r18, 0x0064	; 0x800064 <__data_end>
+ 146:	30 91 65 00 	lds	r19, 0x0065	; 0x800065 <__data_end+0x1>
+ 14a:	8d 81       	ldd	r24, Y+5	; 0x05
+ 14c:	88 2f       	mov	r24, r24
+ 14e:	90 e0       	ldi	r25, 0x00	; 0
+ 150:	88 0f       	add	r24, r24
+ 152:	99 1f       	adc	r25, r25
+ 154:	82 0f       	add	r24, r18
+ 156:	93 1f       	adc	r25, r19
+ 158:	fc 01       	movw	r30, r24
+ 15a:	80 81       	ld	r24, Z
+ 15c:	88 2f       	mov	r24, r24
+ 15e:	90 e0       	ldi	r25, 0x00	; 0
+ 160:	81 30       	cpi	r24, 0x01	; 1
+ 162:	91 05       	cpc	r25, r1
+ 164:	89 f0       	breq	.+34     	; 0x188 <Dio_ReadChannel+0x98>
+ 166:	82 30       	cpi	r24, 0x02	; 2
+ 168:	91 05       	cpc	r25, r1
+ 16a:	1c f4       	brge	.+6      	; 0x172 <Dio_ReadChannel+0x82>
+ 16c:	89 2b       	or	r24, r25
+ 16e:	39 f0       	breq	.+14     	; 0x17e <Dio_ReadChannel+0x8e>
+ 170:	1a c0       	rjmp	.+52     	; 0x1a6 <Dio_ReadChannel+0xb6>
+ 172:	82 30       	cpi	r24, 0x02	; 2
+ 174:	91 05       	cpc	r25, r1
+ 176:	69 f0       	breq	.+26     	; 0x192 <Dio_ReadChannel+0xa2>
+ 178:	03 97       	sbiw	r24, 0x03	; 3
+ 17a:	81 f0       	breq	.+32     	; 0x19c <Dio_ReadChannel+0xac>
+ 17c:	14 c0       	rjmp	.+40     	; 0x1a6 <Dio_ReadChannel+0xb6>
+    {
+      case DIO_PORTA:
+        PortId_Ptr = &DIO_PINA_REG;
+ 17e:	89 e3       	ldi	r24, 0x39	; 57
+ 180:	90 e0       	ldi	r25, 0x00	; 0
+ 182:	9a 83       	std	Y+2, r25	; 0x02
+ 184:	89 83       	std	Y+1, r24	; 0x01
+        break;
+ 186:	0f c0       	rjmp	.+30     	; 0x1a6 <Dio_ReadChannel+0xb6>
+      case DIO_PORTB:
+        PortId_Ptr = &DIO_PINB_REG;
+ 188:	86 e3       	ldi	r24, 0x36	; 54
+ 18a:	90 e0       	ldi	r25, 0x00	; 0
+ 18c:	9a 83       	std	Y+2, r25	; 0x02
+ 18e:	89 83       	std	Y+1, r24	; 0x01
+        break;
+ 190:	0a c0       	rjmp	.+20     	; 0x1a6 <Dio_ReadChannel+0xb6>
+      case DIO_PORTC:
+        PortId_Ptr = &DIO_PINC_REG;
+ 192:	83 e3       	ldi	r24, 0x33	; 51
+ 194:	90 e0       	ldi	r25, 0x00	; 0
+ 196:	9a 83       	std	Y+2, r25	; 0x02
+ 198:	89 83       	std	Y+1, r24	; 0x01
+        break;
+ 19a:	05 c0       	rjmp	.+10     	; 0x1a6 <Dio_ReadChannel+0xb6>
+      case DIO_PORTD:
+        PortId_Ptr = &DIO_PIND_REG;
+ 19c:	80 e3       	ldi	r24, 0x30	; 48
+ 19e:	90 e0       	ldi	r25, 0x00	; 0
+ 1a0:	9a 83       	std	Y+2, r25	; 0x02
+ 1a2:	89 83       	std	Y+1, r24	; 0x01
+        break;
+ 1a4:	00 00       	nop
+    }
+
+    /* Read the required channel */
+    if(BIT_IS_SET(*PortId_Ptr, Dio_PortChannels[ChannelId].ChannelIndex))
+ 1a6:	89 81       	ldd	r24, Y+1	; 0x01
+ 1a8:	9a 81       	ldd	r25, Y+2	; 0x02
+ 1aa:	fc 01       	movw	r30, r24
+ 1ac:	80 81       	ld	r24, Z
+ 1ae:	88 2f       	mov	r24, r24
+ 1b0:	90 e0       	ldi	r25, 0x00	; 0
+ 1b2:	40 91 64 00 	lds	r20, 0x0064	; 0x800064 <__data_end>
+ 1b6:	50 91 65 00 	lds	r21, 0x0065	; 0x800065 <__data_end+0x1>
+ 1ba:	2d 81       	ldd	r18, Y+5	; 0x05
+ 1bc:	22 2f       	mov	r18, r18
+ 1be:	30 e0       	ldi	r19, 0x00	; 0
+ 1c0:	22 0f       	add	r18, r18
+ 1c2:	33 1f       	adc	r19, r19
+ 1c4:	24 0f       	add	r18, r20
+ 1c6:	35 1f       	adc	r19, r21
+ 1c8:	f9 01       	movw	r30, r18
+ 1ca:	21 81       	ldd	r18, Z+1	; 0x01
+ 1cc:	22 2f       	mov	r18, r18
+ 1ce:	30 e0       	ldi	r19, 0x00	; 0
+ 1d0:	02 c0       	rjmp	.+4      	; 0x1d6 <Dio_ReadChannel+0xe6>
+ 1d2:	95 95       	asr	r25
+ 1d4:	87 95       	ror	r24
+ 1d6:	2a 95       	dec	r18
+ 1d8:	e2 f7       	brpl	.-8      	; 0x1d2 <Dio_ReadChannel+0xe2>
+ 1da:	81 70       	andi	r24, 0x01	; 1
+ 1dc:	99 27       	eor	r25, r25
+ 1de:	89 2b       	or	r24, r25
+ 1e0:	19 f0       	breq	.+6      	; 0x1e8 <Dio_ReadChannel+0xf8>
+    {
+      PinState = STD_HIGH;
+ 1e2:	81 e0       	ldi	r24, 0x01	; 1
+ 1e4:	8b 83       	std	Y+3, r24	; 0x03
+ 1e6:	01 c0       	rjmp	.+2      	; 0x1ea <Dio_ReadChannel+0xfa>
+    }
+    else
+    {
+      PinState = STD_LOW;
+ 1e8:	1b 82       	std	Y+3, r1	; 0x03
+  }
+  else
+  {
+    /* No Action Required */
+  }
+  return PinState;
+ 1ea:	8b 81       	ldd	r24, Y+3	; 0x03
+}
+ 1ec:	0f 90       	pop	r0
+ 1ee:	0f 90       	pop	r0
+ 1f0:	0f 90       	pop	r0
+ 1f2:	0f 90       	pop	r0
+ 1f4:	0f 90       	pop	r0
+ 1f6:	df 91       	pop	r29
+ 1f8:	cf 91       	pop	r28
+ 1fa:	08 95       	ret
+
+000001fc <Dio_WriteChannel>:
+ * Return value:        None
+ * Description:         Function to set a level of a channel.
+ ************************************************************************************/
+/* Function for DIO write Channel API */
+void Dio_WriteChannel(Dio_ChannelType const ChannelId, Dio_LevelType const Level)
+{
+ 1fc:	cf 93       	push	r28
+ 1fe:	df 93       	push	r29
+ 200:	00 d0       	rcall	.+0      	; 0x202 <__EEPROM_REGION_LENGTH__+0x2>
+ 202:	00 d0       	rcall	.+0      	; 0x204 <__EEPROM_REGION_LENGTH__+0x4>
+ 204:	1f 92       	push	r1
+ 206:	cd b7       	in	r28, 0x3d	; 61
+ 208:	de b7       	in	r29, 0x3e	; 62
+ 20a:	8c 83       	std	Y+4, r24	; 0x04
+ 20c:	6d 83       	std	Y+5, r22	; 0x05
+  volatile uint8* PortId_Ptr = NULL_PTR;
+ 20e:	1a 82       	std	Y+2, r1	; 0x02
+ 210:	19 82       	std	Y+1, r1	; 0x01
+  boolean ErrorState = FALSE;
+ 212:	1b 82       	std	Y+3, r1	; 0x03
+
+#if (DIO_DEV_ERROR_DETECT == STD_ON)
+  /* Check if the Driver is initialized before using this function */
+  if (DIO_NOT_INITIALIZED == Dio_Status)
+ 214:	80 91 66 00 	lds	r24, 0x0066	; 0x800066 <Dio_Status>
+ 218:	88 23       	and	r24, r24
+ 21a:	49 f4       	brne	.+18     	; 0x22e <__EEPROM_REGION_LENGTH__+0x2e>
+  {
+    Det_ReportError(DIO_MODULE_ID, DIO_INSTANCE_ID, DIO_WRITE_CHANNEL_SID, DIO_E_UNINIT);
+ 21c:	20 ef       	ldi	r18, 0xF0	; 240
+ 21e:	41 e0       	ldi	r20, 0x01	; 1
+ 220:	60 e0       	ldi	r22, 0x00	; 0
+ 222:	88 e7       	ldi	r24, 0x78	; 120
+ 224:	90 e0       	ldi	r25, 0x00	; 0
+ 226:	0e 94 49 00 	call	0x92	; 0x92 <Det_ReportError>
+    ErrorState = TRUE;
+ 22a:	81 e0       	ldi	r24, 0x01	; 1
+ 22c:	8b 83       	std	Y+3, r24	; 0x03
+  }
+  else
+  {
+  }
+  /* Check if the used channel is within the valid range */
+  if (DIO_CONFIGURED_CHANNLES <= ChannelId)
+ 22e:	8c 81       	ldd	r24, Y+4	; 0x04
+ 230:	82 30       	cpi	r24, 0x02	; 2
+ 232:	48 f0       	brcs	.+18     	; 0x246 <__EEPROM_REGION_LENGTH__+0x46>
+  {
+    Det_ReportError(DIO_MODULE_ID, DIO_INSTANCE_ID, DIO_WRITE_CHANNEL_SID, DIO_E_PARAM_INVALID_CHANNEL_ID);
+ 234:	2a e0       	ldi	r18, 0x0A	; 10
+ 236:	41 e0       	ldi	r20, 0x01	; 1
+ 238:	60 e0       	ldi	r22, 0x00	; 0
+ 23a:	88 e7       	ldi	r24, 0x78	; 120
+ 23c:	90 e0       	ldi	r25, 0x00	; 0
+ 23e:	0e 94 49 00 	call	0x92	; 0x92 <Det_ReportError>
+    ErrorState = TRUE;
+ 242:	81 e0       	ldi	r24, 0x01	; 1
+ 244:	8b 83       	std	Y+3, r24	; 0x03
+  {
+  }
+#endif
+
+  /* In-case there are no errors */
+  if(ErrorState == FALSE)
+ 246:	8b 81       	ldd	r24, Y+3	; 0x03
+ 248:	88 23       	and	r24, r24
+ 24a:	09 f0       	breq	.+2      	; 0x24e <__EEPROM_REGION_LENGTH__+0x4e>
+ 24c:	79 c0       	rjmp	.+242    	; 0x340 <__EEPROM_REGION_LENGTH__+0x140>
+  {
+    /* Point to the correct PORT register according to the Port Id stored in the PortIndex member */
+    switch(Dio_PortChannels[ChannelId].PortIndex)
+ 24e:	20 91 64 00 	lds	r18, 0x0064	; 0x800064 <__data_end>
+ 252:	30 91 65 00 	lds	r19, 0x0065	; 0x800065 <__data_end+0x1>
+ 256:	8c 81       	ldd	r24, Y+4	; 0x04
+ 258:	88 2f       	mov	r24, r24
+ 25a:	90 e0       	ldi	r25, 0x00	; 0
+ 25c:	88 0f       	add	r24, r24
+ 25e:	99 1f       	adc	r25, r25
+ 260:	82 0f       	add	r24, r18
+ 262:	93 1f       	adc	r25, r19
+ 264:	fc 01       	movw	r30, r24
+ 266:	80 81       	ld	r24, Z
+ 268:	88 2f       	mov	r24, r24
+ 26a:	90 e0       	ldi	r25, 0x00	; 0
+ 26c:	81 30       	cpi	r24, 0x01	; 1
+ 26e:	91 05       	cpc	r25, r1
+ 270:	89 f0       	breq	.+34     	; 0x294 <__EEPROM_REGION_LENGTH__+0x94>
+ 272:	82 30       	cpi	r24, 0x02	; 2
+ 274:	91 05       	cpc	r25, r1
+ 276:	1c f4       	brge	.+6      	; 0x27e <__EEPROM_REGION_LENGTH__+0x7e>
+ 278:	89 2b       	or	r24, r25
+ 27a:	39 f0       	breq	.+14     	; 0x28a <__EEPROM_REGION_LENGTH__+0x8a>
+ 27c:	1a c0       	rjmp	.+52     	; 0x2b2 <__EEPROM_REGION_LENGTH__+0xb2>
+ 27e:	82 30       	cpi	r24, 0x02	; 2
+ 280:	91 05       	cpc	r25, r1
+ 282:	69 f0       	breq	.+26     	; 0x29e <__EEPROM_REGION_LENGTH__+0x9e>
+ 284:	03 97       	sbiw	r24, 0x03	; 3
+ 286:	81 f0       	breq	.+32     	; 0x2a8 <__EEPROM_REGION_LENGTH__+0xa8>
+ 288:	14 c0       	rjmp	.+40     	; 0x2b2 <__EEPROM_REGION_LENGTH__+0xb2>
+    {
+      case DIO_PORTA:
+        PortId_Ptr = &DIO_PORTA_REG;
+ 28a:	8b e3       	ldi	r24, 0x3B	; 59
+ 28c:	90 e0       	ldi	r25, 0x00	; 0
+ 28e:	9a 83       	std	Y+2, r25	; 0x02
+ 290:	89 83       	std	Y+1, r24	; 0x01
+        break;
+ 292:	0f c0       	rjmp	.+30     	; 0x2b2 <__EEPROM_REGION_LENGTH__+0xb2>
+      case DIO_PORTB:
+        PortId_Ptr = &DIO_PORTB_REG;
+ 294:	88 e3       	ldi	r24, 0x38	; 56
+ 296:	90 e0       	ldi	r25, 0x00	; 0
+ 298:	9a 83       	std	Y+2, r25	; 0x02
+ 29a:	89 83       	std	Y+1, r24	; 0x01
+        break;
+ 29c:	0a c0       	rjmp	.+20     	; 0x2b2 <__EEPROM_REGION_LENGTH__+0xb2>
+      case DIO_PORTC:
+        PortId_Ptr = &DIO_PORTC_REG;
+ 29e:	85 e3       	ldi	r24, 0x35	; 53
+ 2a0:	90 e0       	ldi	r25, 0x00	; 0
+ 2a2:	9a 83       	std	Y+2, r25	; 0x02
+ 2a4:	89 83       	std	Y+1, r24	; 0x01
+        break;
+ 2a6:	05 c0       	rjmp	.+10     	; 0x2b2 <__EEPROM_REGION_LENGTH__+0xb2>
+      case DIO_PORTD:
+        PortId_Ptr = &DIO_PORTD_REG;
+ 2a8:	82 e3       	ldi	r24, 0x32	; 50
+ 2aa:	90 e0       	ldi	r25, 0x00	; 0
+ 2ac:	9a 83       	std	Y+2, r25	; 0x02
+ 2ae:	89 83       	std	Y+1, r24	; 0x01
+        break;
+ 2b0:	00 00       	nop
+    }
+    if(Level == STD_LOW)
+ 2b2:	8d 81       	ldd	r24, Y+5	; 0x05
+ 2b4:	88 23       	and	r24, r24
+ 2b6:	19 f5       	brne	.+70     	; 0x2fe <__EEPROM_REGION_LENGTH__+0xfe>
+    {
+      CLR_BIT(*PortId_Ptr, Dio_PortChannels[ChannelId].ChannelIndex);  /* Write Logic Low */
+ 2b8:	89 81       	ldd	r24, Y+1	; 0x01
+ 2ba:	9a 81       	ldd	r25, Y+2	; 0x02
+ 2bc:	fc 01       	movw	r30, r24
+ 2be:	80 81       	ld	r24, Z
+ 2c0:	48 2f       	mov	r20, r24
+ 2c2:	20 91 64 00 	lds	r18, 0x0064	; 0x800064 <__data_end>
+ 2c6:	30 91 65 00 	lds	r19, 0x0065	; 0x800065 <__data_end+0x1>
+ 2ca:	8c 81       	ldd	r24, Y+4	; 0x04
+ 2cc:	88 2f       	mov	r24, r24
+ 2ce:	90 e0       	ldi	r25, 0x00	; 0
+ 2d0:	88 0f       	add	r24, r24
+ 2d2:	99 1f       	adc	r25, r25
+ 2d4:	82 0f       	add	r24, r18
+ 2d6:	93 1f       	adc	r25, r19
+ 2d8:	fc 01       	movw	r30, r24
+ 2da:	81 81       	ldd	r24, Z+1	; 0x01
+ 2dc:	28 2f       	mov	r18, r24
+ 2de:	30 e0       	ldi	r19, 0x00	; 0
+ 2e0:	81 e0       	ldi	r24, 0x01	; 1
+ 2e2:	90 e0       	ldi	r25, 0x00	; 0
+ 2e4:	02 c0       	rjmp	.+4      	; 0x2ea <__EEPROM_REGION_LENGTH__+0xea>
+ 2e6:	88 0f       	add	r24, r24
+ 2e8:	99 1f       	adc	r25, r25
+ 2ea:	2a 95       	dec	r18
+ 2ec:	e2 f7       	brpl	.-8      	; 0x2e6 <__EEPROM_REGION_LENGTH__+0xe6>
+ 2ee:	80 95       	com	r24
+ 2f0:	84 23       	and	r24, r20
+ 2f2:	28 2f       	mov	r18, r24
+ 2f4:	89 81       	ldd	r24, Y+1	; 0x01
+ 2f6:	9a 81       	ldd	r25, Y+2	; 0x02
+ 2f8:	fc 01       	movw	r30, r24
+ 2fa:	20 83       	st	Z, r18
+    }
+  }
+  else
+  {
+  }
+}
+ 2fc:	21 c0       	rjmp	.+66     	; 0x340 <__EEPROM_REGION_LENGTH__+0x140>
+    {
+      CLR_BIT(*PortId_Ptr, Dio_PortChannels[ChannelId].ChannelIndex);  /* Write Logic Low */
+    }
+    else
+    {
+      SET_BIT(*PortId_Ptr, Dio_PortChannels[ChannelId].ChannelIndex); /* Write Logic High */
+ 2fe:	89 81       	ldd	r24, Y+1	; 0x01
+ 300:	9a 81       	ldd	r25, Y+2	; 0x02
+ 302:	fc 01       	movw	r30, r24
+ 304:	80 81       	ld	r24, Z
+ 306:	48 2f       	mov	r20, r24
+ 308:	20 91 64 00 	lds	r18, 0x0064	; 0x800064 <__data_end>
+ 30c:	30 91 65 00 	lds	r19, 0x0065	; 0x800065 <__data_end+0x1>
+ 310:	8c 81       	ldd	r24, Y+4	; 0x04
+ 312:	88 2f       	mov	r24, r24
+ 314:	90 e0       	ldi	r25, 0x00	; 0
+ 316:	88 0f       	add	r24, r24
+ 318:	99 1f       	adc	r25, r25
+ 31a:	82 0f       	add	r24, r18
+ 31c:	93 1f       	adc	r25, r19
+ 31e:	fc 01       	movw	r30, r24
+ 320:	81 81       	ldd	r24, Z+1	; 0x01
+ 322:	28 2f       	mov	r18, r24
+ 324:	30 e0       	ldi	r19, 0x00	; 0
+ 326:	81 e0       	ldi	r24, 0x01	; 1
+ 328:	90 e0       	ldi	r25, 0x00	; 0
+ 32a:	02 c0       	rjmp	.+4      	; 0x330 <__EEPROM_REGION_LENGTH__+0x130>
+ 32c:	88 0f       	add	r24, r24
+ 32e:	99 1f       	adc	r25, r25
+ 330:	2a 95       	dec	r18
+ 332:	e2 f7       	brpl	.-8      	; 0x32c <__EEPROM_REGION_LENGTH__+0x12c>
+ 334:	84 2b       	or	r24, r20
+ 336:	28 2f       	mov	r18, r24
+ 338:	89 81       	ldd	r24, Y+1	; 0x01
+ 33a:	9a 81       	ldd	r25, Y+2	; 0x02
+ 33c:	fc 01       	movw	r30, r24
+ 33e:	20 83       	st	Z, r18
+    }
+  }
+  else
+  {
+  }
+}
+ 340:	00 00       	nop
+ 342:	0f 90       	pop	r0
+ 344:	0f 90       	pop	r0
+ 346:	0f 90       	pop	r0
+ 348:	0f 90       	pop	r0
+ 34a:	0f 90       	pop	r0
+ 34c:	df 91       	pop	r29
+ 34e:	cf 91       	pop	r28
+ 350:	08 95       	ret
+
+00000352 <main>:
+ * Description:
+ * 
+ */
+
+int main(void)
+{
+ 352:	cf 93       	push	r28
+ 354:	df 93       	push	r29
+ 356:	cd b7       	in	r28, 0x3d	; 61
+ 358:	de b7       	in	r29, 0x3e	; 62
+  while(1)
+
+  {
+
+  }
+ 35a:	ff cf       	rjmp	.-2      	; 0x35a <main+0x8>
+
+0000035c <_exit>:
+ 35c:	f8 94       	cli
+
+0000035e <__stop_program>:
+ 35e:	ff cf       	rjmp	.-2      	; 0x35e <__stop_program>
