@@ -13,7 +13,7 @@
 /*--------------------------------------------------------------------------------------------*/
 /*   INCLUDES   */
 /*--------------------------------------------------------------------------------------------*/
-#include "LIB/Utils.h"
+#include <Common_Macros.h>
 #include "LIB/Std_Types.h"
 
 /*--------------------------------------------------------------------------------------------*/
@@ -97,16 +97,16 @@ typedef enum
 /*--------------------------------------------------------------------------------------------*/
 /*   PROTOTYPES   */
 /*--------------------------------------------------------------------------------------------*/
-extern DIO_ErrorStatus_t M_DIO_Void_SetPinDirection(u8,u8);
-extern DIO_ErrorStatus_t M_DIO_Void_SetPinValue(u8,u8);
-extern u8                M_DIO_U8_GetPinValue(u8);
-extern DIO_ErrorStatus_t M_DIO_Void_TogglePinValue(u8);
-extern DIO_ErrorStatus_t M_DIO_Void_SetPinPullUpRes(u8,u8);
+extern DIO_ErrorStatus_t M_DIO_Void_SetPinDirection(const u8, const u8);
+extern DIO_ErrorStatus_t M_DIO_Void_SetPinValue(const u8, const u8);
+extern u8                M_DIO_U8_GetPinValue(const u8);
+extern DIO_ErrorStatus_t M_DIO_Void_TogglePinValue(const u8);
+extern DIO_ErrorStatus_t M_DIO_Void_SetPinPullUpRes(const u8,const u8);
 
-extern DIO_ErrorStatus_t M_DIO_Void_SetPortDirection(u8,u8);
-extern DIO_ErrorStatus_t M_DIO_Void_SetPortValue(u8,u8);
-extern u8                M_DIO_U8_GetPortValue(u8);
-extern DIO_ErrorStatus_t M_DIO_Void_TogglePortValue(u8);
+extern DIO_ErrorStatus_t M_DIO_Void_SetPortDirection(const u8,const u8);
+extern DIO_ErrorStatus_t M_DIO_Void_SetPortValue(const u8,const u8);
+extern u8                M_DIO_U8_GetPortValue(const u8);
+extern DIO_ErrorStatus_t M_DIO_Void_TogglePortValue(const u8);
 
 
 

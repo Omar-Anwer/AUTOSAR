@@ -11,6 +11,7 @@
 #define APP_PROJECT_INTERFACE_H_
 
 #include "DIO/Dio_Interface.h"
+#include "Timer/Timer_Interface.h"
 #include "LED/LED_Interface.h"
 #include "PushButton/PushButton_Interface.h"
 

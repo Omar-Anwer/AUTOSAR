@@ -7,8 +7,8 @@
  * Description:
  * 
  */
-#ifndef LIB_UTILS_H_
-#define LIB_UTILS_H_
+#ifndef LIB_COMMON_MACROS_H_
+#define LIB_COMMON_MACROS_H_
 
 /* Non AUTOSAR files */
 
@@ -43,4 +43,4 @@
  */
 
 
-#endif /* LIB_UTILS_H_ */
+#endif /* LIB_COMMON_MACROS_H_ */

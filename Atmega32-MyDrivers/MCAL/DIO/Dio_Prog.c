@@ -23,7 +23,7 @@ volatile u8* const DIO_PINArr[DIO_NUMBER_OF_PORTS]  = {&GPIO_PINA_REG,  &GPIO_PI
  * Note         - none
  */
 
-DIO_ErrorStatus_t M_DIO_Void_SetPinDirection(u8 Copy_u8PinNum, u8 Copy_u8PinDir)
+DIO_ErrorStatus_t M_DIO_Void_SetPinDirection(const u8 Copy_u8PinNum, const u8 Copy_u8PinDir)
 {
   DIO_ErrorStatus_t Local_Status = E_OK;
 
@@ -46,7 +46,7 @@ DIO_ErrorStatus_t M_DIO_Void_SetPinDirection(u8 Copy_u8PinNum, u8 Copy_u8PinDir)
 }
 
 
-DIO_ErrorStatus_t M_DIO_Void_SetPinValue(u8 Copy_u8PinNum, u8 Copy_u8PinState)
+DIO_ErrorStatus_t M_DIO_Void_SetPinValue(const u8 Copy_u8PinNum, const u8 Copy_u8PinState)
 {
   DIO_ErrorStatus_t Local_Status = E_OK;
 
@@ -66,7 +66,7 @@ DIO_ErrorStatus_t M_DIO_Void_SetPinValue(u8 Copy_u8PinNum, u8 Copy_u8PinState)
 }
 
 
-u8 M_DIO_U8_GetPinValue(u8 Copy_u8PinNum)
+u8 M_DIO_U8_GetPinValue(const u8 Copy_u8PinNum)
 {
   u8 Local_u8Port = Copy_u8PinNum >> 3;
   u8 Local_u8Bit  = Copy_u8PinNum & 7;
@@ -76,7 +76,7 @@ u8 M_DIO_U8_GetPinValue(u8 Copy_u8PinNum)
 
 
 
-DIO_ErrorStatus_t M_DIO_Void_TogglePinValue(u8 Copy_u8PinNum)
+DIO_ErrorStatus_t M_DIO_Void_TogglePinValue(const u8 Copy_u8PinNum)
 {
   DIO_ErrorStatus_t Local_Status = E_OK;
 
@@ -97,7 +97,7 @@ DIO_ErrorStatus_t M_DIO_Void_TogglePinValue(u8 Copy_u8PinNum)
 
 
 
-DIO_ErrorStatus_t M_DIO_Void_SetPinPullUpRes(u8 Copy_u8PinNum, u8 Copy_u8ResState)
+DIO_ErrorStatus_t M_DIO_Void_SetPinPullUpRes(const u8 Copy_u8PinNum, const u8 Copy_u8ResState)
 {
   DIO_ErrorStatus_t Local_Status = E_OK;
 
@@ -121,7 +121,7 @@ DIO_ErrorStatus_t M_DIO_Void_SetPinPullUpRes(u8 Copy_u8PinNum, u8 Copy_u8ResStat
 /*************************************************************************************/
 
 
-DIO_ErrorStatus_t M_DIO_Void_SetPortDirection(u8 Copy_u8PortNum, u8 Copy_u8PortDir)
+DIO_ErrorStatus_t M_DIO_Void_SetPortDirection(const u8 Copy_u8PortNum, const u8 Copy_u8PortDir)
 {
   DIO_ErrorStatus_t Local_Status = E_OK;
 
@@ -146,7 +146,7 @@ DIO_ErrorStatus_t M_DIO_Void_SetPortDirection(u8 Copy_u8PortNum, u8 Copy_u8PortD
 
 
 
-DIO_ErrorStatus_t M_DIO_Void_SetPortValue(u8 Copy_u8PortNum, u8 Copy_u8PortVal)
+DIO_ErrorStatus_t M_DIO_Void_SetPortValue(const u8 Copy_u8PortNum, const u8 Copy_u8PortVal)
 {
   DIO_ErrorStatus_t Local_Status = E_OK;
 
@@ -164,14 +164,14 @@ DIO_ErrorStatus_t M_DIO_Void_SetPortValue(u8 Copy_u8PortNum, u8 Copy_u8PortVal)
 
 
 
-u8 M_DIO_U8_GetPortValue(u8 Copy_u8PortNum)
+u8 M_DIO_U8_GetPortValue(const u8 Copy_u8PortNum)
 {
   return (*DIO_PINArr[Copy_u8PortNum]);
 }
 
 
 
-DIO_ErrorStatus_t M_DIO_Void_TogglePortValue(u8 Copy_u8PortNum)
+DIO_ErrorStatus_t M_DIO_Void_TogglePortValue(const u8 Copy_u8PortNum)
 {
   DIO_ErrorStatus_t Local_Status = E_OK;
 

@@ -21,6 +21,15 @@ void H_PushButton_Void_PushButtonInit(u8 Copy_u8PushButton, u8 Copy_u8PushButton
     case PUSHBUTTON_0:
       M_DIO_Void_SetPinPullUpRes(PUSHBUTTON_0_PIN, Copy_u8PushButtonRes);
       break;
+    case PUSHBUTTON_1:
+      M_DIO_Void_SetPinPullUpRes(PUSHBUTTON_1_PIN, Copy_u8PushButtonRes);
+      break;
+    case PUSHBUTTON_2:
+      M_DIO_Void_SetPinPullUpRes(PUSHBUTTON_2_PIN, Copy_u8PushButtonRes);
+      break;
+    case PUSHBUTTON_3:
+      M_DIO_Void_SetPinPullUpRes(PUSHBUTTON_3_PIN, Copy_u8PushButtonRes);
+      break;
   }
 }
 
